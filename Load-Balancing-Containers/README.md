@@ -1,10 +1,12 @@
-#Instructions & Tasks
+# Instructions & Tasks
+
 Acme Anvil Corporation - Load Balancing Containers
 In this learning activity, you will load balance containers using two methods. First, you will use Nginx to load balance traffic to three weather-app containers. Next, you will use Docker Swarm to load-balance a pair of Nginx containers.
 
 Log in to Swarm Server 1 and Swarm Server 2 and sudo to root.
 
-##Part 1
+## Part 1
+
 We will be using Docker Compose to set up the load balancer and containers.
 
   1.  On Swarm Server 1, in the root directory, navigate to lb-challenge and create the Docker Compose file.
@@ -21,7 +23,8 @@ We will be using Docker Compose to set up the load balancer and containers.
   10. Set tty to true.
   11. The port mapping should be set to 80 on the host and 80 on the container.
   12. The load balancer should be using the frontend network.
-#Create the Frontend Network
+
+### Create the Frontend Network
   1.  In the load-balancer directory, there will be a file called nginx.conf.
   2.  Add the three weather-app services to the upstream section.
   3.  In the server section, make sure it is listening on port 80.
@@ -33,6 +36,7 @@ We will be using Docker Compose to set up the load balancer and containers.
   10. Verify that your app is up and running.
 
 ##Part 2
+
   1.  In the root directory, use cat to retrieve the contents of swarm-token.txt.
   2.  Use the docker swarm join --token command from the output of the file to join Swarm Server 2 to the swarm.
   3.  Create a service called nginx-app.
