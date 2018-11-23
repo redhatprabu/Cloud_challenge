@@ -35,7 +35,8 @@ We will be using Docker Compose to set up the load balancer and containers.
   9.  Execute a compose up and make sure to use the build and detached flags.
   10. Verify that your app is up and running.
 
-##Part 2
+
+### Part 2
 
   1.  In the root directory, use cat to retrieve the contents of swarm-token.txt.
   2.  Use the docker swarm join --token command from the output of the file to join Swarm Server 2 to the swarm.
