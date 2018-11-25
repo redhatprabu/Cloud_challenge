@@ -1,4 +1,5 @@
-#Instructions & Tasks
+
+# Instructions & Tasks
 
 In this learning activity, you will create a Ghost Blog service using Docker Compose.
 
@@ -29,10 +30,11 @@ In this learning activity, you will create a Ghost Blog service using Docker Com
   19. Execute a compose up and make sure to use the build and detached flags.
   20. Verify that your app is up and running.
 
-  '''
+## Eg :
+
+'''
   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
 07f1a2fe8484        ghost:1-alpine      "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->2368/tcp   ghost-blog
 bf330a0a6523        mysql:5.7           "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        3306/tcp, 33060/tcp    ghost-db
 [root@ip-10-0-1-195 ~]#
-
 '''
