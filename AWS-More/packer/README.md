@@ -31,3 +31,7 @@
         Execute the packer build and supply the VPC ID and Subnet ID as variables. Use AMI ami-1853ac65 for the base_ami.
 
         After the AMI has completed building, create an EC2 instance using the AMI that was built and set the instance type to t2.small.
+      
+            ```
+            packer build -var 'ami_name=ami-redhatprabu' -var 'base_ami=ami-09479453c5cde9639' -var 'vpc_id=vpc-0f99e2a8c8f36ed94' -var 'subnet_id=subnet-029b25517862054f9' packer.json
+            ```
