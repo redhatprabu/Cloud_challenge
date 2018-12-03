@@ -1,1 +1,43 @@
 
+1) Install Terraform :
+
+curl -O https://releases.hashicorp.com/terraform/0.11.2/terraform_0.11.2_linux_amd64.zip
+
+2) mkdir /bin/terraform
+
+3) unzip terraform_0.11.2_linux_amd64.zip -d /bin/terraform
+
+4) set Path 
+      export PATH=$PATH:/bin/terraform
+5) run #terraform version
+
+6) install awscli#
+    #pip install awscli --upgrade
+    #aws --version
+    
+7) To Install ansible : 
+    # apt-get install software-properties-common
+
+     #apt-add-repository ppa:ansible/ansible
+     #apt-get install ansible
+     
+8) #ansible --version
+
+9) setup ssh agent 
+  #ssh-keygen   -> /root/.ssh/kryptopnite
+  #ssh-agent bash
+  #ssh-add ~/.ssh/kyptonite
+  #ssh-add -l
+  
+ 10) Go to ansible config and disable host_key_checking : vi /etc/ansible/ansible.cfg
+      host_key_checking = False  
+      
+ 11) Create IAM and download CSV file 
+
+12) create DNS and run delegation set :  
+      #aws route53 create-reusable-delegation-set --caller-reference 1224 --profile superhero
+      add the output to #vi route53
+      
+ 13) Go to console AWS -> Route53 --> edit and add nameservers details you got from step 12
+ 
+ 
