@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    harden_linux_root_password: <password>
+    harden_linux_deploy_user: deploy
+    harden_linux_deploy_user_password: <passwd>
+    harden_linux_deploy_user_home: /home/deploy
+    harden_linux_deploy_user_public_keys:
+      - /home/cloud_user/.ssh/id_rsa.pub
+  pre_tasks:
+  - name: install python
+    raw: test -e /usr/bin/python || (apt-get -y update && apt-get install -y python-pip)
+  roles:
+    - githubixx.harden-linux
