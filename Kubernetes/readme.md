@@ -47,3 +47,55 @@ When you are ready to execute the packer build and provisioning process, enter:
 $ ksac-packer-build.sh
 When the output is complete, use the amazon console to view the ami images created.
 
+
+
+# Hardening a kops Default Deployment with Kube-bench
+## Use kops to Create the Cluster
+
+A script has been provided to run kops and create the cluster.
+
+To run the script, type:
+
+$ . ./k8s-create.sh
+To actually create the cluster, type:
+
+$ kops update cluster --yes
+To validate the cluster, type:
+
+$ kops validate cluster
+
+## Retrieve a connect string from Amazon AWS and Connect to the Master Node
+Use the Amazon AWS Console and retrieve a connect string for the master node. Then use ssh to connect to the master node.
+
+$ ssh -i [YOUR .pem HERE] admin@[YOUR dns name HERE]
+
+## Run the AquaSec kube-bench utility on the Master Node
+From your terminal session on the master node...
+
+To install the kube-bench utility on the master node, type:
+
+$ sudo docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install
+Then to run the utility and output the report to a file, type:
+
+$ ./kube-bench master > orig.report
+
+## Remediate Failed Tests 1.1.2, 1.1.5 and 1.1.6
+Use the process status command to look at the current apiserver arguments.
+
+$ ps -aef | grep kube-apiserver
+Use the vi editory as super user to edit the kube apiserver manifest.
+
+$ sudo vi /etc/kubernetes/manifests/mainfest-kube-apiserver.conf
+Edit the test recommendations per the remediation listed in the kube-bench report.
+
+Rerun the kube=bench report after the api server has restarted.
+
+$ ./kube-bench master > new.report
+Compare the old and new reports using the Linux diff command.
+
+$ diff orig.report new.report
+
+
+
+
+
